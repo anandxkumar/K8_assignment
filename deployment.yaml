@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: gotest-deployment
+  labels:
+    app: gotest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gotest
+  template:
+    metadata:
+      labels:
+        app: gotest
+
+    spec:
+      containers:
+      - name: gotest
+        image: docker.io/anakumar/testgopodman:latest
+        ports:
+        - containerPort: 8090
